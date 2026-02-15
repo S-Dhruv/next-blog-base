@@ -16,12 +16,20 @@ const nextConfig = {
         serverComponentsExternalPackages: ['mongodb'],
     },
 
-    webpack: (config) => {
+    webpack: (config, { isServer }) => {
         // Force a single mongodb instance (avoid nested copy inside next-blog)
         config.resolve.alias['mongodb'] = path.resolve(
             process.cwd(),
             'node_modules/mongodb'
         );
+
+        // Fix internal plugins path for Vercel deployment
+        if (isServer) {
+            config.resolve.alias['internal://internal-plugins'] = path.resolve(
+                process.cwd(),
+                'node_modules/@supergrowthai/next-blog/dist/nextjs/assets/@supergrowthai/next-blog-dashboard/static/internal-plugins'
+            );
+        }
 
         return config;
     },
