@@ -28,7 +28,7 @@ interface ManifestEntry {
 }
 
 // Check for required environment variable
-const PLUGIN_HOST_URL = process.env.PLUGIN_HOST_URL ||
+const PLUGIN_HOST_URL = "https://next-blog-base-puce.vercel.app/" ||
     (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : undefined) ||
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined);
 
