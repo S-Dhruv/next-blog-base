@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "prebuild": "bun app/copy-plugins.js",
     "start": "next start"
   },
   "dependencies": {
