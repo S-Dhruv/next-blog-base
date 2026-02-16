@@ -14,17 +14,33 @@ const nextConfig = {
         serverComponentsExternalPackages: ['mongodb'],
     },
 
-    webpack: (config, { isServer }) => {
+    webpack: (config, { isServer, webpack }) => {
         config.resolve.alias['mongodb'] = path.resolve(
             process.cwd(),
             'node_modules/mongodb'
         );
 
-        // Point internal plugins to public directory for Vercel
         if (isServer) {
-            config.resolve.alias['internal://internal-plugins'] = path.resolve(
+            // Resolve the actual plugin path
+            const pluginPath = path.resolve(
                 process.cwd(),
-                'public/internal-plugins'
+                'node_modules/@supergrowthai/next-blog/dist/nextjs/assets/@supergrowthai/next-blog-dashboard/static/internal-plugins'
+            );
+
+            // Create alias pointing directly to node_modules
+            config.resolve.alias['internal://internal-plugins'] = pluginPath;
+
+            // Add plugin files to the bundle
+            config.plugins.push(
+                new webpack.NormalModuleReplacementPlugin(
+                    /^internal:\/\/internal-plugins/,
+                    (resource) => {
+                        resource.request = resource.request.replace(
+                            'internal://internal-plugins',
+                            pluginPath
+                        );
+                    }
+                )
             );
         }
 
