@@ -1,5 +1,9 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const sourceDir = path.join(
     __dirname,
@@ -8,7 +12,7 @@ const sourceDir = path.join(
 
 const targetDir = path.join(__dirname, '../public/internal-plugins');
 
-function copyDir(src, dest) {
+function copyDir(src: string, dest: string): void {
     if (!fs.existsSync(src)) {
         console.error('❌ Source directory not found:', src);
         console.log('📦 Available in node_modules:');
@@ -18,14 +22,14 @@ function copyDir(src, dest) {
             if (fs.existsSync(blogPath)) {
                 console.log('Found @supergrowthai/next-blog at:', blogPath);
 
-                // List what's actually in the package
                 const distPath = path.join(blogPath, 'dist');
                 if (fs.existsSync(distPath)) {
                     console.log('Contents of dist:', fs.readdirSync(distPath));
                 }
             }
         } catch (e) {
-            console.error('Could not inspect package:', e.message);
+            const error = e as Error;
+            console.error('Could not inspect package:', error.message);
         }
 
         console.log('\n⚠️  Creating minimal fallback plugins...');
@@ -40,7 +44,7 @@ function copyDir(src, dest) {
 
     const entries = fs.readdirSync(src, { withFileTypes: true });
 
-    for (let entry of entries) {
+    for (const entry of entries) {
         const srcPath = path.join(src, entry.name);
         const destPath = path.join(dest, entry.name);
 
@@ -53,16 +57,15 @@ function copyDir(src, dest) {
     }
 }
 
-function createFallbackPlugins(dest) {
+function createFallbackPlugins(dest: string): void {
     fs.mkdirSync(dest, { recursive: true });
 
     const plugins = ['system', 'system-update-manager'];
 
-    plugins.forEach(pluginName => {
+    plugins.forEach((pluginName: string) => {
         const pluginDir = path.join(dest, pluginName);
         fs.mkdirSync(pluginDir, { recursive: true });
 
-        // Create plugin.js
         const pluginContent = `
 module.exports = {
   id: '${pluginName}',
@@ -80,7 +83,6 @@ module.exports = {
 };
 `;
 
-        // Create server.js
         const serverContent = `
 module.exports = {
   async init(context) {
@@ -90,7 +92,6 @@ module.exports = {
 };
 `;
 
-        // Create client.js
         const clientContent = `
 export default {
   async init(context) {
@@ -115,6 +116,7 @@ try {
     copyDir(sourceDir, targetDir);
     console.log('\n✅ Plugin copy completed successfully!');
 } catch (error) {
-    console.error('\n❌ Error during plugin copy:', error);
+    const err = error as Error;
+    console.error('\n❌ Error during plugin copy:', err);
     process.exit(1);
 }
