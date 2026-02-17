@@ -5,14 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "prebuild": "bun app/copy-plugins.js",
     "start": "next start"
   },
   "dependencies": {
     "next": "^14.2.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "@supergrowthai/next-blog": "3.0.2",
+    "@supergrowthai/next-blog": "3.0.8",
     "@aws-sdk/client-s3": "^3.975.0",
     "@supergrowthai/next-blog-ui": "2.0.4",
     "@aws-sdk/lib-storage": "^3.975.0",
