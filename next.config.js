@@ -11,10 +11,11 @@ const nextConfig = {
     ],
 
     experimental: {
-        serverComponentsExternalPackages: ['mongodb'],
+        serverExternalPackages: ['mongodb'],
         outputFileTracingIncludes: {
-            '/**': [
-                './node_modules/.bun/**/@supergrowthai/next-blog/dist/nextjs/assets/**',
+            "/*": [
+                "./node_modules/@supergrowthai/next-blog/dist/nextjs/assets/**/*",
+                "./node_modules/.bun/**/@supergrowthai/next-blog/dist/nextjs/assets/**/*",
             ],
         },
     },
