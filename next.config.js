@@ -10,16 +10,18 @@ const nextConfig = {
         '@supergrowthai/oneapi'
     ],
 
-    experimental: {
-        serverExternalPackages: ['mongodb'],
-        outputFileTracingIncludes: {
-            "/*": [
-                "./node_modules/@supergrowthai/next-blog/dist/nextjs/assets/**/*",
-                "./node_modules/.bun/**/@supergrowthai/next-blog/dist/nextjs/assets/**/*",
-            ],
-        },
+    // ✅ moved OUT of experimental in Next 16
+    serverExternalPackages: ['mongodb'],
+
+    // ✅ moved OUT of experimental in Next 16
+    outputFileTracingIncludes: {
+        "/*": [
+            "./node_modules/@supergrowthai/next-blog/dist/nextjs/assets/**/*",
+            "./node_modules/.bun/**/@supergrowthai/next-blog/dist/nextjs/assets/**/*"
+        ]
     },
 
+    // still needed for that package
     webpack: (config) => {
         config.resolve.alias['mongodb'] = path.resolve(
             process.cwd(),
