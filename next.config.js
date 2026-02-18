@@ -14,8 +14,7 @@ const nextConfig = {
         serverComponentsExternalPackages: ['mongodb'],
         outputFileTracingIncludes: {
             '/**': [
-                './node_modules/@supergrowthai/next-blog/dist/**/*',
-                './node_modules/.bun/**/@supergrowthai/next-blog/dist/**/*',
+                './node_modules/.bun/**/@supergrowthai/next-blog/dist/nextjs/assets/**',
             ],
         },
     },
