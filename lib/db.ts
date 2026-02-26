@@ -7,9 +7,7 @@ const mongoUrl = process.env.MONGODB_URI;
 const useMongo = Boolean(mongoUrl);
 
 let dbProvider: () => Promise<DatabaseAdapter>;
-if (mongoUrl && mongoUrl) {
-    const mongoUrl = process.env.MONGO_DB_URL!;
-
+if (mongoUrl) {
     // Cache the client promise across invocations
     const globalAny: any = globalThis;
     if (!globalAny._mongoClientPromise) {
