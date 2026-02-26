@@ -24,7 +24,7 @@ export async function createAdminUser() {
 
     try {
         await client.connect();
-        const db = client.db("next-blog");
+        const db = client.db(process.env.MONGODB_NAME);
         const users = db.collection("users");
 
         const now = Date.now();
@@ -38,9 +38,8 @@ export async function createAdminUser() {
             slug,
             bio: "Default administrator account",
             password: passwordHash,
-            permissions: ["all:all"],   // adjust if your app expects something else
+            permissions: ["all:all"],
             isSystem: false,
-
             createdAt: now,
             updatedAt: now,
         };
