@@ -1,65 +1,68 @@
-import {MongoClient} from "mongodb";
 import crypto from "crypto";
+import type {DatabaseAdapter, Permission, UserData} from "@supergrowthai/next-blog";
 
-function hashPassword(password:string) {
-    return crypto.createHash("sha256").update(password).digest("hex");
-}
+const encryptPassword = (password: string, salt: string) => {
+    return crypto.scryptSync(password, salt, 32).toString('hex');
+};
+
+export const hashPassword = (password: string): string => {
+    const salt = crypto.randomBytes(16).toString('hex');
+    return encryptPassword(password, salt) + salt;
+};
 
 function slugify(str:string) {
     return str.toLowerCase().replace(/\s+/g, "-");
 }
 
-export async function createAdminUser() {
-    const uri = process.env.MONGODB_URI;
+export async function createAdminUser(db: DatabaseAdapter) {
     const adminEmail = process.env.ADMIN_EMAIL;
     const adminUsername = process.env.ADMIN_USERNAME || "DEMO-DEMO-DEMO" ;
     const adminPassword = process.env.ADMIN_PASSWORD;
     const adminName = process.env.ADMIN_NAME || "demo-demo";
 
-    if (!uri || !adminEmail || !adminPassword) {
+    if (!adminEmail || !adminPassword) {
         throw new Error("Missing required ADMIN_* env variables");
     }
 
-    const client = new MongoClient(uri);
-
     try {
-        await client.connect();
-        const db = client.db(process.env.MONGODB_NAME);
-        const users = db.collection("users");
+        const existingAdmin = await db.users.findOne({ email: adminEmail });
+
+        if (existingAdmin) {
+            console.log("Admin already exists, skipping creation");
+            return;
+        }
 
         const now = Date.now();
         const passwordHash = hashPassword(adminPassword);
         const slug = slugify(adminUsername);
 
-        const adminUser = {
+        const allPermissions: Permission[] = [
+            'all:all',
+            'blogs:all', 'blogs:list', 'blogs:read', 'blogs:create', 'blogs:update', 'blogs:delete',
+            'categories:all', 'categories:list', 'categories:read', 'categories:create', 'categories:update', 'categories:delete',
+            'tags:all', 'tags:list', 'tags:read', 'tags:create', 'tags:update', 'tags:delete',
+            'users:all', 'users:list', 'users:read', 'users:create', 'users:update', 'users:delete',
+            'media:all', 'media:list', 'media:read', 'media:create', 'media:update', 'media:delete'
+        ];
+
+        const adminUser: UserData = {
             username: adminUsername,
             email: adminEmail,
             name: adminName,
             slug,
             bio: "Default administrator account",
             password: passwordHash,
-            permissions: ["all:all"],
+            permissions: allPermissions,
             isSystem: false,
             createdAt: now,
             updatedAt: now,
         };
 
-        const result = await users.updateOne(
-            { email: adminEmail },
-            { $setOnInsert: adminUser },
-            { upsert: true }
-        );
-
-        if (result.upsertedCount === 1) {
-            console.log("Admin user created");
-        } else {
-            console.log("Admin already exists, skipping creation");
-        }
+        await db.users.create(adminUser);
+        console.log("Admin user created");
 
     } catch (err) {
         console.error("Error creating admin:", err);
-    } finally {
-        await client.close();
     }
 }
 

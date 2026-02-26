@@ -7,8 +7,9 @@ const mongoUrl = process.env.MONGODB_URI;
 const useMongo = Boolean(mongoUrl);
 
 let dbProvider: () => Promise<DatabaseAdapter>;
+if (mongoUrl && mongoUrl) {
+    const mongoUrl = process.env.MONGO_DB_URL!;
 
-if (useMongo && mongoUrl) {
     // Cache the client promise across invocations
     const globalAny: any = globalThis;
     if (!globalAny._mongoClientPromise) {
@@ -16,16 +17,24 @@ if (useMongo && mongoUrl) {
     }
     const clientPromise = globalAny._mongoClientPromise;
 
+    let adminCreatedPromise: Promise<void> | null = null;
+
     dbProvider = async () => {
         const client = await clientPromise;
-        const dbName = process.env.MONGO_DB_NAME || "next-blog-02";
-        return new adapters.MongoDBAdapter(dbName, client);
+        const db = new adapters.MongoDBAdapter(process.env.MONGO_DB_NAME || "next-blog", client);
+
+        if(process.env.ADMIN_EMAIL && process.env.ADMIN_PASSWORD ) {
+            if (!adminCreatedPromise) {
+                adminCreatedPromise = createAdminUser(db);
+            }
+            await adminCreatedPromise;
+        }
+
+        return db;
     };
     console.log("Using MongoDBAdapter.");
-    if(process.env.ADMIN_EMAIL && process.env.ADMIN_PASSWORD ) {
-        await createAdminUser();
-    }
-} else {
+
+}else {
     dbProvider = async () => {
         throw new Error("Database not configured. Please set MONGODB_URI in your environment variables.");
     };
