@@ -12,9 +12,9 @@ function slugify(str:string) {
 export async function createAdminUser() {
     const uri = process.env.MONGODB_URI;
     const adminEmail = process.env.ADMIN_EMAIL;
-    const adminUsername = process.env.ADMIN_USERNAME || "admin";
+    const adminUsername = process.env.ADMIN_USERNAME || "DEMO-DEMO-DEMO" ;
     const adminPassword = process.env.ADMIN_PASSWORD;
-    const adminName = process.env.ADMIN_NAME || "Default Admin";
+    const adminName = process.env.ADMIN_NAME || "demo-demo";
 
     if (!uri || !adminEmail || !adminPassword) {
         throw new Error("Missing required ADMIN_* env variables");
