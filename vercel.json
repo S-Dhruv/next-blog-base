@@ -3,5 +3,8 @@
     "app/**/*.{js,ts,tsx}": {
       "includeFiles": "node_modules/@supergrowthai/next-blog/dist/**"
     }
+  },
+  "storage": {
+    "blob": true
   }
 }

@@ -1,0 +1,8 @@
+{
+  "/api/next-blog/[...page]/route": "app/api/next-blog/[...page]/route.js",
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/blogs/[slug]/page": "app/blogs/[slug]/page.js",
+  "/page": "app/page.js",
+  "/docs/plugins/create/page": "app/docs/plugins/create/page.js"
+}

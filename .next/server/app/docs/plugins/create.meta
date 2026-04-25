@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/docs/layout,_N_T_/docs/plugins/layout,_N_T_/docs/plugins/create/layout,_N_T_/docs/plugins/create/page,_N_T_/docs/plugins/create"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/docs/plugins/create/__PAGE__",
+    "/docs/plugins/create",
+    "/docs/plugins",
+    "/docs",
+    "/_index",
+    "/_head"
+  ]
+}

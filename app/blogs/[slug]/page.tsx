@@ -73,13 +73,13 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
             description: blog.excerpt,
             type: 'article',
             url: canonicalUrl || undefined,
-            images: blog.featuredMedia?.url ? [blog.featuredMedia.url] : [],
+            //images: blog.featuredMedia?.url ? [blog.featuredMedia.url] : [],
         },
         twitter: {
             card: blog.featuredMedia?.url ? 'summary_large_image' : 'summary',
             title: blog.title,
             description: blog.excerpt,
-            images: blog.featuredMedia?.url ? [blog.featuredMedia.url] : [],
+            //images: blog.featuredMedia?.url ? [blog.featuredMedia.url] : [],
         },
         // Set canonical URL if permalink is available
         alternates: canonicalUrl ? {
@@ -127,17 +127,17 @@ export default async function (props: { params: Promise<{ slug: string }> }) {
                 </header>
 
                 {/* Featured Image */}
-                {blog.featuredMedia?.url && (
-                    <FeaturedMedia
-                        blog={blog}
-                        style={{
-                            width: '100%',
-                            height: 'auto',
-                            borderRadius: '8px',
-                            marginBottom: '32px'
-                        }}
-                    />
-                )}
+                {/*{blog.featuredMedia?.url && (*/}
+                {/*    <FeaturedMedia*/}
+                {/*        blog={blog}*/}
+                {/*        style={{*/}
+                {/*            width: '100%',*/}
+                {/*            height: 'auto',*/}
+                {/*            borderRadius: '8px',*/}
+                {/*            marginBottom: '32px'*/}
+                {/*        }}*/}
+                {/*    />*/}
+                {/*)}*/}
 
                 {/* Blog Content */}
                 <BlogContent blog={blog}/>

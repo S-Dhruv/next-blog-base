@@ -1,0 +1,8 @@
+{
+  "/api/next-blog/[...page]/route": "/api/next-blog/[...page]",
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/blogs/[slug]/page": "/blogs/[slug]",
+  "/page": "/",
+  "/docs/plugins/create/page": "/docs/plugins/create"
+}

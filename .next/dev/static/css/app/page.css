@@ -1,0 +1,296 @@
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/.bun/next@16.1.6+6dbf9a050bc9aadb/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[15].oneOf[5].use[2]!./node_modules/.bun/next@16.1.6+6dbf9a050bc9aadb/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[15].oneOf[5].use[3]!./app/page.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.page_page__556_G {
+    min-height: 100vh;
+    background-color: #F9FAFB;
+    color: #1F2937;
+    display: flex;
+    flex-direction: column;
+}
+
+.page_header__oRW75 {
+    background-color: white;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.page_headerContainer__AcmN_ {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page_headerTitle__Jd54L {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.page_dashboardLink__eBzCK {
+    padding: 0.5rem 1rem;
+    background-color: #2563EB;
+    color: white;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    transition: background-color 0.2s;
+}
+
+.page_dashboardLink__eBzCK:hover {
+    background-color: #1D4ED8;
+}
+
+.page_main__nw1Wk {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3rem 1.5rem;
+    flex-grow: 1;
+    width: 100%;
+}
+
+/* Hero */
+.page_hero__7KFOs {
+    text-align: center;
+    padding: 4rem 0 3rem;
+}
+
+.page_mainTitle__hzwUM {
+    font-size: 2.75rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.page_mainSubtitle__gT76n {
+    color: #6B7280;
+    font-size: 1.15rem;
+    margin-bottom: 2rem;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.page_ctaButton__lcwUc {
+    display: inline-block;
+    padding: 0.6rem 1.4rem;
+    background-color: #111827;
+    color: white;
+    border-radius: 2rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background-color 0.2s;
+    text-decoration: none;
+}
+
+.page_ctaButton__lcwUc:hover {
+    background-color: #374151;
+}
+
+/* Sections */
+.page_section__zQZ2o {
+    margin-bottom: 4rem;
+}
+
+.page_postsSection__tbMTk {
+    margin-top: 2rem;
+    padding-top: 3rem;
+    border-top: 1px solid #E5E7EB;
+}
+
+.page_sectionTitle__6ic_4 {
+    font-size: 1.375rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #111827;
+}
+
+/* Writing Tips */
+.page_tipsGrid__BQSvu {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 768px) {
+    .page_tipsGrid__BQSvu {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.page_tipCard__7jxvy {
+    background-color: white;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+    border: 1px solid #F3F4F6;
+}
+
+.page_tipEmoji__hJurt {
+    font-size: 1.75rem;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.page_tipTitle__Qc6B9 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: #111827;
+}
+
+.page_tipBody__zyq0k {
+    color: #6B7280;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Reading Links */
+.page_linksGrid__FhMPE {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 768px) {
+    .page_linksGrid__FhMPE {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.page_linkCard__4OOOQ {
+    display: block;
+    background-color: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.page_linkCard__4OOOQ:hover {
+    border-color: #2563EB;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+.page_linkLabel__HyrEl {
+    font-weight: 600;
+    color: #2563EB;
+    font-size: 0.95rem;
+    display: block;
+    margin-bottom: 0.35rem;
+}
+
+.page_linkDesc__lLBTw {
+    color: #6B7280;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Posts */
+.page_postGrid__liKJ2 {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .page_postGrid__liKJ2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .page_postGrid__liKJ2 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.page_postCard__tpe56 {
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s;
+}
+
+.page_postCard__tpe56:hover {
+    transform: translateY(-0.5rem);
+}
+
+.page_postCardContent__XlTt9 {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+.page_postCardTitle__L6faN {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    transition: color 0.2s;
+}
+
+.page_postCard__tpe56:hover .page_postCardTitle__L6faN {
+    color: #2563EB;
+}
+
+.page_postCardExcerpt__4BNVS {
+    color: #4B5563;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+.page_postCardFooter__9rvsk {
+    padding: 1.5rem;
+    background-color: #F9FAFB;
+    text-align: right;
+}
+
+.page_postCardLink__8SGdD {
+    color: #2563EB;
+    font-weight: 600;
+}
+
+.page_noPosts__fhRd7 {
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.page_noPostsTitle__S1rWd {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.page_noPostsText__c1oTD {
+    color: #6B7280;
+    margin-top: 0.5rem;
+}
+
+.page_footer__F3MD0 {
+    background-color: white;
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+}
+
+.page_footerContainer__eXMkR {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: #6B7280;
+}
+

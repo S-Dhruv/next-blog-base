@@ -1,0 +1,5 @@
+{
+  "/api/next-blog/[...page]/route": "app/api/next-blog/[...page]/route.js",
+  "/page": "app/page.js",
+  "/blogs/[slug]/page": "app/blogs/[slug]/page.js"
+}
